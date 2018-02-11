@@ -10,7 +10,12 @@ public class AsciiArtPrinter {
      * @param asciiArt to print
      */
     public void print(char[][] asciiArt) {
-	// TODO - implement this
+        for (int height, height < asciiArt[0].length, height++){
+            for (int width; width < asciiArt[1].length; width++){
+                System.out.print(asciiArt[height][width]);
+            }
+            System.out.println();
+        }
     }
 
     protected void clearScreen() {
