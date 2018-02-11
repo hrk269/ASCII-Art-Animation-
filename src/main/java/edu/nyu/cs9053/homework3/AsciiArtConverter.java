@@ -29,7 +29,7 @@ public class AsciiArtConverter {
      * @return the converted {@code char[][]}
      */
     public char[][] convert(ImageInfoProvider infoProvider) {
-        new asciiArt[infoProvider.getHeight()][infoProvider.getWidth()];
+        char[][] asciiArt = new char[infoProvider.getHeight()][infoProvider.getWidth()];
         for (int height; height<asciiArt[0].length; height++){
             for (int width; width<asciiArt[1].length;width++){
                 int pixel = infoProvider.getPixel(width, height);
@@ -50,7 +50,7 @@ public class AsciiArtConverter {
      * @return the appropriately mapped char
      */
     protected char getCharacterForPixel(double pixel) {
-        tableIndex = math.ceil((pixel/255d)*(ASCII_ART_LOOKUP_TABLE.length-1));
+        int tableIndex = (int) Math.ceil((pixel/255d)*(ASCII_ART_LOOKUP_TABLE.length-1));
         return ASCII_ART_LOOKUP_TABLE[tableIndex];
     }
 
