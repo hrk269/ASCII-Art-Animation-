@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
+
 /**
  * User: blangel
  */
@@ -21,16 +22,17 @@ public class AnimatedAsciiArt {
      * @return converted {@linkplain ImageInfoProvider[]}
      */
     protected static ImageInfoProvider[] convert(String[] files) {
+        ImageInfoProvider[] convertedFiles = new ImageInfoProvider[files.length];
         for (int i=0; i<files.length; i++){
             if (files[i]== null){
                 throw new IllegalArgumentException();
             } else if (files[i] == ""){
                 throw new IllegalArgumentException();
             } else {
-                files[i]= convert(files[i]);
+                convertedFiles[i]= AnimatedAsciiArt.convert(files[i]);
             }
         }
-        return files;
+        return convertedFiles;
     }
 
     protected static ImageInfoProvider convert(String file) {
@@ -47,11 +49,11 @@ public class AnimatedAsciiArt {
 
     private final AsciiArtPrinter printer;
 
-    public SlideShow(String[] files) {
+    public AnimatedAsciiArt(String[] files) {
         this(convert(files), new AsciiArtConverter(), new AsciiArtPrinter());
     }
 
-    public SlideShow(ImageInfoProvider[] providers, AsciiArtConverter converter, AsciiArtPrinter printer) {
+    public AnimatedAsciiArt(ImageInfoProvider[] providers, AsciiArtConverter converter, AsciiArtPrinter printer) {
         if ((providers == null) || (converter == null) || (printer == null)) {
             throw new IllegalArgumentException();
         }
@@ -66,9 +68,11 @@ public class AnimatedAsciiArt {
      * @implNote after each print invoke {@linkplain #sleep()}
      */
     public void play() {
-        printer.clearScreen();
-        printer.print(converter.convert(providers));
-        sleep();
+        for (int numberFrames=0;numberFrames<providers.length;numberFrames++){
+            printer.clearScreen();
+            printer.print(converter.convert(providers[numberFrames]));
+            sleep();
+        }
     }
 
     protected void sleep() {
