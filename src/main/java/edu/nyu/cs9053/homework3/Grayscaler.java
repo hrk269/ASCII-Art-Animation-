@@ -13,11 +13,11 @@ public class Grayscaler {
      * @return the gray-scaled value
      */
     public double grayScale(int pixel) {
-        double blue = pixel & 0xff;
-        double green = (pixel & 0xff00) >> 8;
-        double red = (pixel & 0xff0000) >> 16;
-        double grayscaledRGB = ((0.21*red)+(0.72*green)+(0.07*blue));
-        return grayscaledRGB;
+        double blueValueOfPixel = pixel & 0xff;
+        double greenValueOfPixel = (pixel & 0xff00) >> 8;
+        double redValueOfPixel = (pixel & 0xff0000) >> 16;
+        double grayscalePixel = ((0.21*redValueOfPixel)+(0.72*greenValueOfPixel)+(0.07*blueValueOfPixel));
+        return grayscalePixel;
     }
 
 }

@@ -29,16 +29,16 @@ public class AsciiArtConverter {
      * @return the converted {@code char[][]}
      */
     public char[][] convert(ImageInfoProvider infoProvider) {
-        char[][] asciiArt = new char[infoProvider.getHeight()][infoProvider.getWidth()];
-        for (int height=0; height<asciiArt[0].length; height++){
-            for (int width=0; width<asciiArt[1].length;width++){
+        char[][] asciiArtImage = new char[infoProvider.getHeight()][infoProvider.getWidth()];
+        for (int height=0; height<asciiArtImage.length; height++){
+            for (int width=0; width<asciiArtImage[1].length;width++){
                 int pixel = infoProvider.getPixel(width, height);
                 double grayscalePixel = grayscaler.grayScale(pixel);
                 char asciiCharacter = getCharacterForPixel(grayscalePixel);
-                asciiArt[height][width] = asciiCharacter;
+                asciiArtImage[height][width] = asciiCharacter;
             }
         }
-        return asciiArt;
+        return asciiArtImage;
 
     }
 
