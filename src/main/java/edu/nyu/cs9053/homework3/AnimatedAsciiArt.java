@@ -23,13 +23,13 @@ public class AnimatedAsciiArt {
      */
     protected static ImageInfoProvider[] convert(String[] files) {
         ImageInfoProvider[] convertedFiles = new ImageInfoProvider[files.length];
-        for (int i=0; i<files.length; i++){
-            if (files[i]== null){
+        for (int filesIndex=0; filesIndex<files.length; filesIndex++){
+            if (files[filesIndex]== null){
                 throw new IllegalArgumentException();
-            } else if (files[i] == ""){
+            } else if (files[filesIndex] == ""){
                 throw new IllegalArgumentException();
             } else {
-                convertedFiles[i]= AnimatedAsciiArt.convert(files[i]);
+                convertedFiles[filesIndex]= AnimatedAsciiArt.convert(files[filesIndex]);
             }
         }
         return convertedFiles;

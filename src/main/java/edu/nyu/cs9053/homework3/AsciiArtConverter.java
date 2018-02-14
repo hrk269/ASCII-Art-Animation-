@@ -30,12 +30,12 @@ public class AsciiArtConverter {
      */
     public char[][] convert(ImageInfoProvider infoProvider) {
         char[][] asciiArtImage = new char[infoProvider.getHeight()][infoProvider.getWidth()];
-        for (int height=0; height<asciiArtImage.length; height++){
-            for (int width=0; width<asciiArtImage[1].length;width++){
-                int pixel = infoProvider.getPixel(width, height);
-                double grayscalePixel = grayscaler.grayScale(pixel);
+        for (int imageHeight=0; imageHeight<asciiArtImage.length; imageHeight++){
+            for (int imageWidth=0; imageWidth<asciiArtImage[1].length; imageWidth++){
+                int pixelRGBValue = infoProvider.getPixel(imageWidth, imageHeight);
+                double grayscalePixel = grayscaler.grayScale(pixelRGBValue);
                 char asciiCharacter = getCharacterForPixel(grayscalePixel);
-                asciiArtImage[height][width] = asciiCharacter;
+                asciiArtImage[imageHeight][imageWidth] = asciiCharacter;
             }
         }
         return asciiArtImage;
@@ -50,8 +50,8 @@ public class AsciiArtConverter {
      * @return the appropriately mapped char
      */
     protected char getCharacterForPixel(double pixel) {
-        int tableIndex = (int) Math.ceil((pixel/255d)*(ASCII_ART_LOOKUP_TABLE.length-1));
-        return ASCII_ART_LOOKUP_TABLE[tableIndex];
+        int asciiArtTableIndex = (int) Math.ceil((pixel/255d)*(ASCII_ART_LOOKUP_TABLE.length-1));
+        return ASCII_ART_LOOKUP_TABLE[asciiArtTableIndex];
     }
 
 }

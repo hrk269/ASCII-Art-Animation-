@@ -10,9 +10,9 @@ public class AsciiArtPrinter {
      * @param asciiArt to print
      */
     public void print(char[][] asciiArt) {
-        for (int height=0; height < asciiArt.length; height++){
-            for (int width=0; width < asciiArt[1].length; width++){
-                System.out.printf("%c", asciiArt[height][width]);
+        for (int imageHeight=0; imageHeight < asciiArt.length; imageHeight++){
+            for (int imageWidth=0; imageWidth < asciiArt[1].length; imageWidth++){
+                System.out.printf("%c", asciiArt[imageHeight][imageWidth]);
             }
             System.out.printf("%c", '\n');
         }
